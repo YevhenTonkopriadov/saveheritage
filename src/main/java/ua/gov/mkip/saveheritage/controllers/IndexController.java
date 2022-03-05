@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
     @GetMapping("/")
     public String index (Model model) {
-        model.addAttribute("title", "save haretage");
         return "index";
     }
     @GetMapping("/home")
     public String home (Model model) {
-        model.addAttribute("title", "save haretage");
         return "home";
     }
 }

@@ -1,11 +1,13 @@
 package ua.gov.mkip.saveheritage.models;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Objects;
 
+@Data
 @Entity
 @Table (name = "users")
 public class User implements UserDetails {
@@ -23,27 +25,13 @@ public class User implements UserDetails {
 
     private String role;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    private String nameOrganization;
+    private String organizationName;
 
     private String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
     }
 
     @Override
@@ -64,18 +52,5 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(confirmPassword, user.confirmPassword) && Objects.equals(role, user.role) && Objects.equals(nameOrganization, user.nameOrganization) && Objects.equals(email, user.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password, confirmPassword, role, nameOrganization, email);
     }
 }
