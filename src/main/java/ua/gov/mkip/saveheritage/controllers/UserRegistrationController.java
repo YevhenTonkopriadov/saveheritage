@@ -1,21 +1,21 @@
 package ua.gov.mkip.saveheritage.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import ua.gov.mkip.saveheritage.models.Role;
 import ua.gov.mkip.saveheritage.models.User;
-import ua.gov.mkip.saveheritage.servises.UserService;
+import ua.gov.mkip.saveheritage.services.UserService;
 
 import java.util.Collections;
 
 @Controller
+@RequiredArgsConstructor
 public class UserRegistrationController {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
 
     @GetMapping ("/registration")
     public String registration (Model model){
