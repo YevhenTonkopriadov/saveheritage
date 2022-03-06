@@ -8,4 +8,4 @@ services:
       # FIXME remove password from here
       MYSQL_ROOT_PASSWORD: Zxsw21qaZ!
     ports:
-      - 3306:3306
+      - 5001:3306
