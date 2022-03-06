@@ -1,4 +1,4 @@
-package ua.gov.mkip.saveheritage.servises;
+package ua.gov.mkip.saveheritage.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
