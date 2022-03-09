@@ -9,7 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import ua.gov.mkip.saveheritage.models.Role;
 import ua.gov.mkip.saveheritage.models.User;
 import ua.gov.mkip.saveheritage.repositories.UserRepository;
-
 import java.util.Set;
 
 @SpringBootApplication
@@ -19,20 +18,18 @@ public class ServiceApplication {
 	private final PasswordEncoder passwordEncoder;
 	private final UserRepository userRepository;
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner commandLineRunner() {
 		return args -> {
-			System.out.println("Creating user...");
 			User user = new User();
-			user.setUsername("elik");
-			user.setPassword(passwordEncoder.encode("elik"));
-			user.setEmail("elik@ukr.net");
+			user.setUsername("Tonkopriadov");
+			user.setPassword(passwordEncoder.encode("Tonkopriadov"));
+			user.setEmail("Tonkopriadov@mkip.gov.ua");
 			user.setRoles(Set.of(Role.ADMIN));
-			user.setOrganizationName("minCult");
+			user.setOrganizationName("MKIP");
 			userRepository.save(user);
 		};
-	}
-
+	}*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceApplication.class, args);

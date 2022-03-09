@@ -3,12 +3,18 @@ package ua.gov.mkip.saveheritage.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ua.gov.mkip.saveheritage.models.Role;
 import ua.gov.mkip.saveheritage.models.User;
 import ua.gov.mkip.saveheritage.services.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import ua.gov.mkip.saveheritage.validator.UserValidator;
 
+import javax.validation.Valid;
 import java.util.Collections;
 
 @Controller
@@ -16,35 +22,24 @@ import java.util.Collections;
 public class UserRegistrationController {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
+    private final UserValidator userValidator;
 
-    @GetMapping ("/registration")
+    @RequestMapping ("/adduser")
     public String registration (Model model){
-        model.addAttribute("title", "registration new user");
-        return "registration";
+        model.addAttribute("user", new User());
+        return "adduser";
     }
 
-    @PostMapping ("/registration")
-    public String registrationAddUser (Model model, User user) {
-        model.addAttribute("title", "registration new user");
-        if (user.getUsername().length()<2) {
-            model.addAttribute("problem", "plese add user name");
-            return "registration";
-        }
-        if (user.getPassword().length()<2) {
-            model.addAttribute("problem", "plese add password");
-            return "registration";
-        }
-        if (!user.getPassword().equals( user.getConfirmPassword())) {
-            model.addAttribute("problem", "Password != ConfirmPassword");
-            return "registration";
-        }
-        System.out.println(userService.findByUsername(user.getUsername()));
-        if (userService.findByUsername(user.getUsername()) != null) {
-            System.out.println();
-            model.addAttribute("problem", "user is available");
-            return "registration";
+    @PostMapping("/registration")
+    public String registrationAddUser (@ModelAttribute @Valid User user, BindingResult bindingResult, Model model) {
+        userValidator.validate(user,bindingResult);
+        System.out.println(bindingResult.toString());
+        if (bindingResult.hasErrors()) {
+            return "adduser";
         }
         user.setRoles(Collections.singleton(Role.USER));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.save(user);
         return "login";
     }

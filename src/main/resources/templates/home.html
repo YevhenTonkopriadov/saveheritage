@@ -5,9 +5,11 @@
     <title>Домашня сторінка</title>
 </head>
 <body>
-<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
+    <input type="submit" value="Вийти з аккаунту"/>
 </form>
+<a href="records">перелік втрачених обеєктів</a>
+<a href="cabinet">особистий кабінет</a>
+<a href="records">адміністрування</a>
 </body>
 </html>

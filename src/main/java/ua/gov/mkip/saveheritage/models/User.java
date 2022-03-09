@@ -3,8 +3,8 @@ package ua.gov.mkip.saveheritage.models;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Collection;
 import java.util.Set;
 
@@ -12,10 +12,11 @@ import java.util.Set;
 @Entity
 @Table (name = "users")
 public class User implements UserDetails {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
 
     private String username;
 
@@ -31,7 +32,10 @@ public class User implements UserDetails {
 
     private String organizationName;
 
+    @Email
     private String email;
+
+    private String phone;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -58,3 +62,4 @@ public class User implements UserDetails {
         return true;
     }
 }
+

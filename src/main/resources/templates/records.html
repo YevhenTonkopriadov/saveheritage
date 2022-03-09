@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+>
+<head>
+    <title>Домашня сторінка</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Вийти з аккаунту"/>
+</form>
+<a href="records">перелік втрачених обеєктів</a>
+<a href="cabinet">особистий кабінет</a>
+<a href="records">адміністрування</a>
+
+<h1>Перелік обєктів культурної спадщини</h1>
+<a href="addrecord">Додати об'єкт</a>
+    <table>
+        <tr>
+            <th>Код запису</th>
+            <th>Назва об'єкта</th>
+            <th>Опис Об'єктуа</th>
+            <th>Світлини</th>
+            <th>Редагувати</th>
+            <th>Видалити</th>
+        </tr>
+        <tr th:each="record : ${records}">
+            <td th:text="${record.recordId}"/>
+            <td th:text="${record.recordName}"/>
+            <td th:text="${record.recordDescription}"/>
+            <td> Світлини<td/>
+            <td> Редагувати<td/>
+            <td> Видалити<td/>
+        </tr>
+    </table>
+</body>
+</html>

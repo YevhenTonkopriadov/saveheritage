@@ -5,13 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<div>
-    <a th:href="@{/home}" th:unless= "${#httpServletRequest.remoteUser}" >Log in</a>
-    <a th:href="@{/registration}" th:unless= "${#httpServletRequest.remoteUser}" >Sign Up</a>
+    <div>
+        <a th:href="@{/home}">Увійти</a>
+        <a th:href="@{/adduser}" >Зареєструватися</a>
+    </div>
     <form th:action="@{/logout}" method="post" th:if= "${#httpServletRequest.remoteUser}">
-        <input type="submit" value="Sign Out"/>
+     <input type="submit" value="Вийти"/>
     </form>
-</div>
-<p th:text="'Hello, ' + ${title} + '!'" />
 </body>
 </html>

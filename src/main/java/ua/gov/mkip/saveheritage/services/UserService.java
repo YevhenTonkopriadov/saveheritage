@@ -1,15 +1,15 @@
 package ua.gov.mkip.saveheritage.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ua.gov.mkip.saveheritage.models.User;
 import ua.gov.mkip.saveheritage.repositories.UserRepository;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    final private UserRepository userRepository;
 
     public User save(User user) {
         return userRepository.save(user);
