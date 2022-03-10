@@ -3,8 +3,9 @@ package ua.gov.mkip.saveheritage.models;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Set;
 
@@ -21,9 +22,6 @@ public class User implements UserDetails {
     private String username;
 
     private String password;
-
-    @Transient
-    private String confirmPassword;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
