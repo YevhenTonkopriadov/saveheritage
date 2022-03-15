@@ -1,16 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Головна</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+<head th:insert="/fragments/fragment :: head"/>
 <body>
-    <div>
-        <a th:href="@{/home}">Увійти</a>
-        <a th:href="@{/adduser}" >Зареєструватися</a>
-    </div>
-    <form th:action="@{/logout}" method="post" th:if= "${#httpServletRequest.remoteUser}">
-     <input type="submit" value="Вийти"/>
-    </form>
+<div th:insert="/fragments/fragment :: singInUpOut"/>
 </body>
 </html>

@@ -18,18 +18,19 @@ public class UserRegistrationController {
 
     private final UserService userService;
 
-    @RequestMapping ("/adduser")
+    @RequestMapping ("/registration")
     public String registration (Model model){
-        model.addAttribute("user", new UserRegistrationInput());
-        return "adduser";
+        model.addAttribute("title","Реєстрація");
+        model.addAttribute("userRegistrationInput", new UserRegistrationInput());
+        return "registration";
     }
 
     @PostMapping("/registration")
-    public String registrationAddUser (@ModelAttribute @Valid UserRegistrationInput input, BindingResult bindingResult) {
+    public String registrationAddUser (@ModelAttribute @Valid UserRegistrationInput userRegistrationInput, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "adduser";
+            return "registration";
         }
-        userService.save(input);
+        userService.save(userRegistrationInput);
         return "login";
     }
 }

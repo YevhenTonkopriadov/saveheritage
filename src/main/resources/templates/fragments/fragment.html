@@ -1,0 +1,20 @@
+<head th:fragment="head">
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+</head>
+
+<div th:fragment="index">
+    <a th:href="@{/}">Головна</a>
+</div>
+
+<div th:fragment="singInUpOut">
+    <div th:unless= "${#httpServletRequest.remoteUser}">
+        <a th:href="@{/home}">Увійти</a>
+        <a th:href="@{/registration}" >Зареєструватися</a>
+    </div>
+    <form th:action="@{/logout}" method="post" th:if= "${#httpServletRequest.remoteUser}">
+        <input type="submit" value="Вийти"/>
+    </form>
+</div>
+

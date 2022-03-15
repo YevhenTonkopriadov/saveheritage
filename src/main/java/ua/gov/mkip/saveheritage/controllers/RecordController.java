@@ -10,13 +10,11 @@ import org.springframework.validation.BindingResult;
 import ua.gov.mkip.saveheritage.services.RecordService;
 import ua.gov.mkip.saveheritage.models.Record;
 import ua.gov.mkip.saveheritage.models.User;
-import ua.gov.mkip.saveheritage.validator.RecordValidator;
 
 @Controller
 @RequiredArgsConstructor
 public class RecordController {
     private final RecordService recordService;
-    private final RecordValidator recordValidator;
 
     @RequestMapping ("/records")
     public String records (Model model){
@@ -32,7 +30,6 @@ public class RecordController {
 
     @PostMapping (path = "/saveReord")
     public String createRecord(@Valid @ModelAttribute Record record, BindingResult bindingResult, Model model) {
-        recordValidator.validate(record,bindingResult);
         System.out.println(bindingResult.toString());
         if (bindingResult.hasErrors()) {
             return "addrecord";

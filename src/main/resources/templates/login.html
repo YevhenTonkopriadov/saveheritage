@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" lang="">
-  <head>
-    <title>Вхід</title>
-    <meta charset="UTF-8">
-  </head>
+<head th:insert="/fragments/fragment :: head"/>
+<div th:insert="/fragments/fragment :: index"/>
   <body>
   <div th:if="${param.error}">
     Ви ввели некоректний логін чи пароль.

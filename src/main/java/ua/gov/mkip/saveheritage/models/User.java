@@ -29,10 +29,7 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     private String organizationName;
-
-    @Email
     private String email;
-
     private String phone;
 
     @Override

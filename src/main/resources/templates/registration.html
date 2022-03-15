@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+  <head th:insert="fragments/fragment :: head"/>
+  <body>
+  <div th:insert="fragments/fragment :: index" />
+  <div>
+    <form th:action="@{/registration}" th:object="${userRegistrationInput}" method="post">
+      <table>
+        <tr>
+          <td>Логін:</td>
+          <td><input type="text" th:field="*{username}"/></td>
+          <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</td>
+        </tr>
+        <tr>
+          <td>Пароль:</td>
+          <td><input type="password" th:field="*{password}"/></td>
+          <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+        </tr>
+        <tr>
+          <td>Підтвердження паролю:</td>
+          <td><input type="password" th:field="*{confirmPassword}"/></td>
+          <td th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Confirm Password Error</td>
+        </tr>
+        <tr>
+          <td>Назва організації:</td>
+          <td><input type="text" th:field="*{organizationName}"/></td>
+          <td th:if="${#fields.hasErrors('organizationName')}" th:errors="*{organizationName}">Organization Name Error</td>
+        </tr>
+        <tr>
+          <td>Електронна пошта:</td>
+          <td><input type="text" th:field="*{email}"/></td>
+          <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+        </tr>
+        <tr>
+          <td>Номер телефону:</td>
+          <td><input type="text" th:field="*{phone}"/></td>
+          <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"> Phone Error</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Зареєструватися"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  </body>
+</html>
