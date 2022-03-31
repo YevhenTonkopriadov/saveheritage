@@ -4,8 +4,6 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class PasswordRequirementsValidator implements ConstraintValidator<PasswordRequirements, String> {
-    public void initialize(UniqueLogin constraint) {
-    }
 
     public boolean isValid(String password, ConstraintValidatorContext context) {
         return (password.codePoints().filter(Character::isDigit).count()>=2)

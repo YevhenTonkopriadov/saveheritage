@@ -63,12 +63,22 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-validation</artifactId>
 			</dependency>
+			<dependency>
+				<groupId>org.thymeleaf.extras</groupId>
+				<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.jmimemagic</groupId>
+				<artifactId>jmimemagic</artifactId>
+				<version>0.1.4</version>
+			</dependency>
 		</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
 			</plugin>
 		</plugins>
 	</build>

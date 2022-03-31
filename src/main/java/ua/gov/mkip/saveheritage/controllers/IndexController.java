@@ -11,6 +11,11 @@ public class IndexController {
         model.addAttribute("title","Головна");
         return "index";
     }
+    @GetMapping("/test")
+    public String test (Model model) {
+        model.addAttribute("title","test");
+        return "test.html";
+    }
     @GetMapping("/home")
     public String home (Model model) {
         model.addAttribute("title","Домашня");

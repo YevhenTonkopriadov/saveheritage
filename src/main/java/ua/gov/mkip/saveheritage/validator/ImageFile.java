@@ -9,9 +9,10 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PasswordRequirementsValidator.class)
-public @interface PasswordRequirements {
-        String message() default "{message.passwordRequirementsNotMet}";
-        Class<?>[] groups() default {};
-        Class<? extends Payload>[] payload() default {};
+@Constraint(validatedBy = ImageFileValidator.class)
+
+public @interface ImageFile {
+    String message() default "{message.fileIsNotValid}";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
 }

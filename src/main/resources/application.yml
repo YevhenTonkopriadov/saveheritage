@@ -13,3 +13,7 @@ spring:
     # FIXME: remove password from here
     password: Zxsw21qaZ!
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+fileresources:
+  storange:   fileSystem #db
+  path: /savedimages

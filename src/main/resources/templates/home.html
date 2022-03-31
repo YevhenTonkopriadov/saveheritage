@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
->
-<head>
-    <title>Домашня сторінка</title>
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<head th:insert="fragments/fragment::head"/>
 <body>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Вийти з аккаунту"/>
-</form>
-<a href="records">перелік втрачених обеєктів</a>
-<a href="cabinet">особистий кабінет</a>
-<a href="records">адміністрування</a>
+<div th:insert="fragments/fragment::singInUpOut"/>
+<header th:insert="fragments/fragment::header"/>
+
+<div sec:authorize="hasRole('ADMIN')">
+    This content is only shown to administrators.§§
+</div>
+
+<div sec:authorize="hasRole('USER')">
+    This content is only shown to users.
+</div>
 </body>
 </html>

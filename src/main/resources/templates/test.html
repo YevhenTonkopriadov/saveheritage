@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+    <title>Welcome to Spring Security Thymeleaf tutorial</title>
+</head>
+<body>
+<h2>Welcome</h2>
+<div sec:authorize="hasRole('ADMIN')">hasRole('ADMIN')</div>
+<h2>Welcome</h2>
+<div sec:authorize="hasRole('ROLE_ADMIN')">hasRole('ROLE_ADMIN')</div>
+<h2>Welcome</h2>
+<sec:authorize access="hasAnyRole('ADMIN')">
+    Text visible to admin
+</sec:authorize>
+</body>
+</html>

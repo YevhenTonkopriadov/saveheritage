@@ -9,6 +9,7 @@ import ua.gov.mkip.saveheritage.repositories.RecordRepository;
 
 import java.util.Optional;
 
+
 @Service
 @RequiredArgsConstructor
 public class RecordService {
@@ -16,16 +17,14 @@ public class RecordService {
     private final RecordRepository recordRepository;
 
      public Iterable<Record> findAllRecordsCurrentUser() {
-         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-         return recordRepository.findByUser(user);
+         return recordRepository.findByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+     }
+    public Optional<Record> findOne (Long recordID){
+         return recordRepository.findById(recordID);
      }
 
      public void save(Record record) {
          recordRepository.save(record);
-    }
-
-    public Optional<Record> findOne(Long id) {
-        return recordRepository.findById(id);
     }
 
     public void delete(Long id) {

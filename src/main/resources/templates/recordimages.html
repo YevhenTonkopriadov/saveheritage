@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:insert="fragments/fragment::head"/>
+<body>
+<div th:insert="fragments/fragment::singInUpOut"/>
+<header th:insert="fragments/fragment::header"/>
+    <div th:each="image:${images}">
+        <img th:src="@{/img/{imageName}(imageName=${image.getImageName})}">
+    </div>
+        <form th:action="@{/savefile}" th:object="${imageDownloadInput}" method="post" enctype="multipart/form-data" >
+            <table>
+                <tr>
+                    <td></td>
+                    <td><input type="hidden" th:field="*{recordId}" /></td>
+                    <td th:if="${#fields.hasErrors('recordId')}" th:errors="*{recordId}">Name Error</td>
+                </tr>
+                <tr>
+                    <td>Опис файлу</td>
+                    <td><input type="text" th:field="*{descriptionImage}" /></td>
+                    <td th:if="${#fields.hasErrors('descriptionImage')}" th:errors="*{descriptionImage}">Description Image Error</td>
+                </tr>
+                <tr>
+                    <td>Виберіть файл для завантаження:</td>
+                    <td><input type="file" th:field="*{fileImage}" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Завантажити" /></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

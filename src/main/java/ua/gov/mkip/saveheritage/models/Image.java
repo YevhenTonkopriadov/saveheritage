@@ -13,10 +13,15 @@ public class Image {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long imageId;
 
-    @Pattern(regexp = "^[A-Za-zА_Яа-я]+$")
-    @Size(min=4, max = 20)
+    private String  imageName;
+
+    private String  originalImageName;
+
     private String descriptionImage;
 
     @Lob
     private byte[] image;
+
+    @OneToOne (fetch=FetchType.LAZY)
+   private Record record;
 }

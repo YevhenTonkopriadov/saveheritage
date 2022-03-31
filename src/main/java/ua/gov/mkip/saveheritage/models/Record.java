@@ -18,7 +18,4 @@ public class Record {
     private String recordName;
     private String recordDescription;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "record_id")
-    private List<Image> comments = new ArrayList<>();
 }

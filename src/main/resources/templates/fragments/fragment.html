@@ -6,6 +6,7 @@
 
 <div th:fragment="index">
     <a th:href="@{/}">Головна</a>
+    <br>
 </div>
 
 <div th:fragment="singInUpOut">
@@ -16,5 +17,16 @@
     <form th:action="@{/logout}" method="post" th:if= "${#httpServletRequest.remoteUser}">
         <input type="submit" value="Вийти"/>
     </form>
+    <br>
 </div>
+<header th:fragament="header">
+    <ul class="hr">
+        <li><a th:href="@{/records}">Перелік втрачених об'єктів</a></li>
+        <li><a th:href="@{/addrecord}">Додати об'єкт</a></li>
+        <li><a th:href="@{/cabinet}">Особистий кабінет</a></li>
+        <li><a th:href="@{/records}">Адміністрування</a></li>
+    </ul>
+    <br>
+</header>
+
 
