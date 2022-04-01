@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.springframework.org/security/tags">
+      xmlns:sec="http://www.springframework.org/security/tags" >
 <head>
     <title>Welcome to Spring Security Thymeleaf tutorial</title>
 </head>
 <body>
-<h2>Welcome</h2>
-<div sec:authorize="hasRole('ADMIN')">hasRole('ADMIN')</div>
-<h2>Welcome</h2>
-<div sec:authorize="hasRole('ROLE_ADMIN')">hasRole('ROLE_ADMIN')</div>
-<h2>Welcome</h2>
-<sec:authorize access="hasAnyRole('ADMIN')">
-    Text visible to admin
-</sec:authorize>
+<h2>Welcome1</h2>
+<div sec:authorize="hasAnyRole('ROLE_USER')">hasRole('ROLE_USER')</div>
+<h2>Welcome2</h2>
+<div sec:authorize="hasRole('ROLE_USER')">hasRole('ROLE_USER')</div>
+<h2>Welcome3</h2>
+<div sec:authorize="isAuthenticated()"> This content is only shown to authenticated users.</div>
+<h2>Welcome4</h2>
+<div th:text="${#httpServletRequest.userPrincipal}"> </div>
+<h2>Welcome5</h2>
+<div th:text="${#httpServletRequest.isUserInRole('ROLE_USER')}"> </div>
+</div>
+
 </body>
 </html>
