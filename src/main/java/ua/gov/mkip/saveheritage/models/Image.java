@@ -1,27 +1,27 @@
 package ua.gov.mkip.saveheritage.models;
 
 import lombok.Data;
+
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 @Data
 @Entity
-@Table (name = "images")
+@Table(name = "images")
 public class Image {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long imageId;
 
-    private String  imageName;
+    private String imageName;
 
-    private String  originalImageName;
+    private String originalImageName;
 
     private String descriptionImage;
 
     @Lob
     private byte[] image;
 
-    @OneToOne (fetch=FetchType.LAZY)
-   private Record record;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Record record;
 }

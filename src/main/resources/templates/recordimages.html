@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-<head th:insert="fragments/fragment::head"/>
-<body>
-<div th:insert="fragments/fragment::singInUpOut"/>
-<header th:insert="fragments/fragment::header"/>
-    <div th:each="image:${images}">
-        <img th:src="@{/img/{imageName}(imageName=${image.getImageName})}">
-    </div>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+    <head th:insert="fragments/fragment::head"/>
+    <body>
+        <div th:insert="fragments/fragment::singInUpOut"/>
+        <div th:each="image:${images}">
+            <img th:src="@{/img/{imageName}(imageName=${image.getImageName})}">
+        </div>
         <form th:action="@{/savefile}" th:object="${imageDownloadInput}" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>

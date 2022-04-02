@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-<head th:insert="fragments/fragment::head"/>
-<body>
-<div th:insert="fragments/fragment::singInUpOut"/>
-<header th:insert="fragments/fragment::header"/>
-<h1>Перелік обєктів культурної спадщини</h1>
-    <table>
-        <tr>
-            <th>Код запису</th>
-            <th>Назва об'єкта</th>
-            <th>Опис Об'єктуа</th>
-            <th>Світлини</th>
-            <th>Редагувати</th>
-            <th>Видалити</th>
-        </tr>
-        <tr th:each="record:${records}">
-            <td th:text="${record.recordId}"/>
-            <td th:text="${record.recordName}"/>
-            <td th:text="${record.recordDescription}"/>
-            <td> <a th:href="@{/recordimages/{recordId}(recordId=${record.recordId})}"> Світлини</a><td/>
-            <td> <a th:href="@{/editrecord/{recordId}(recordId=${record.recordId})}">Редагувати</a><td/>
-            <td> <a th:href ="@{/deleterecord/{recordId}(recordId=${record.recordId})}">Видалити</a><td/>
-        </tr>
-    </table>
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+    <head th:insert="fragments/fragment::head"/>
+    <body>
+        <div th:insert="fragments/fragment::singInUpOut"/>
+        <header th:insert="fragments/fragment::header"/>
+        <h1>Перелік обєктів культурної спадщини</h1>
+        <table>
+            <tr>
+                <th>Код запису</th>
+                <th>Назва об'єкта</th>
+                <th>Опис Об'єктуа</th>
+                <th>Світлини</th>
+                <th>Редагувати</th>
+                <th>Видалити</th>
+            </tr>
+            <tr th:each="record:${records}">
+                <td th:text="${record.recordId}"/>
+                <td th:text="${record.recordName}"/>
+                <td th:text="${record.recordDescription}"/>
+                <td> <a th:href="@{/recordimages/{recordId}(recordId=${record.recordId})}"> Світлини</a><td/>
+                <td> <a th:href="@{/editrecord/{recordId}(recordId=${record.recordId})}">Редагувати</a><td/>
+                <td> <a th:href ="@{/deleterecord/{recordId}(recordId=${record.recordId})}">Видалити</a><td/>
+            </tr>
+        </table>
+    </body>
 </html>

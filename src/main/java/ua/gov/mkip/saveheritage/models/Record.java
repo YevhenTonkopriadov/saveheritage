@@ -2,7 +2,6 @@ package ua.gov.mkip.saveheritage.models;
 
 import lombok.Data;
 import javax.persistence.*;
-import java.util.*;
 
 @Data
 @Entity

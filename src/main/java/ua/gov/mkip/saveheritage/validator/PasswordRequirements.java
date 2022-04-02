@@ -11,7 +11,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = PasswordRequirementsValidator.class)
 public @interface PasswordRequirements {
-        String message() default "{message.passwordRequirementsNotMet}";
-        Class<?>[] groups() default {};
-        Class<? extends Payload>[] payload() default {};
+    String message() default "{message.passwordRequirementsNotMet}";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

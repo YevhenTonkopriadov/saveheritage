@@ -1,17 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.springframework.org/security/tags">
-<head th:insert="fragments/fragment::head"/>
-<body>
-<div th:insert="fragments/fragment::singInUpOut"/>
-<header th:insert="fragments/fragment::header"/>
-
-<div sec:authorize="hasRole('ADMIN')">
-    This content is only shown to administrators.§§
-</div>
-
-<div sec:authorize="hasRole('Role.USER')">
-    This content is only shown to users.
-</div>
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+    <head th:insert="fragments/fragment::head"/>
+        <body>
+            <div th:insert="fragments/fragment::singInUpOut"/>
+            <header th:insert="fragments/fragment::header"/>
+        </body>
 </html>

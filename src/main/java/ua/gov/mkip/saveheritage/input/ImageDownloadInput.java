@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class ImageDownloadInput {
 
     @Pattern(regexp = "^[A-Za-zА_Яа-я .,-]+$")
-    @Size(min=4, max = 20)
+    @Size(min = 4, max = 20)
     private String descriptionImage;
 
     @ImageFile

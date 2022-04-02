@@ -1,6 +1,7 @@
+
 <head th:fragment="head">
     <title th:text="${title}"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/htm; charset=UTF-8"/>
     <link th:href="@{/styles/style.css}" rel="stylesheet" />
 </head>
 
@@ -24,7 +25,7 @@
         <li><a th:href="@{/records}">Перелік втрачених об'єктів</a></li>
         <li><a th:href="@{/addrecord}">Додати об'єкт</a></li>
         <li><a th:href="@{/cabinet}">Особистий кабінет</a></li>
-        <li><a th:href="@{/records}">Адміністрування</a></li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/records}">Адміністрування</a></li>
     </ul>
     <br>
 </header>

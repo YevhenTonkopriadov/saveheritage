@@ -13,6 +13,8 @@ import java.lang.annotation.Target;
 
 public @interface ImageFile {
     String message() default "{message.fileIsNotValid}";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

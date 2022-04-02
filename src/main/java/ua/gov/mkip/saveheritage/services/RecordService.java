@@ -16,15 +16,16 @@ public class RecordService {
 
     private final RecordRepository recordRepository;
 
-     public Iterable<Record> findAllRecordsCurrentUser() {
-         return recordRepository.findByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-     }
-    public Optional<Record> findOne (Long recordID){
-         return recordRepository.findById(recordID);
-     }
+    public Iterable<Record> findAllRecordsCurrentUser() {
+        return recordRepository.findByUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    }
 
-     public void save(Record record) {
-         recordRepository.save(record);
+    public Optional<Record> findOne(Long recordID) {
+        return recordRepository.findById(recordID);
+    }
+
+    public void save(Record record) {
+        recordRepository.save(record);
     }
 
     public void delete(Long id) {

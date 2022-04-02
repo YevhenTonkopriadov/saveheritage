@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class ImageDownloadInputToImage  implements Converter<ImageDownloadInput, Image>{
+public class ImageDownloadInputToImage implements Converter<ImageDownloadInput, Image> {
 
     @Value("${fileresources.storange}")
     String imageStorangeType;
@@ -27,7 +27,7 @@ public class ImageDownloadInputToImage  implements Converter<ImageDownloadInput,
     @Override
     public Image convert(ImageDownloadInput imageDownloadInput) {
         Image image = new Image();
-        String imageName = UUID.randomUUID().toString()+"."+imageDownloadInput.getFileImage().getOriginalFilename();
+        String imageName = UUID.randomUUID().toString() + "." + imageDownloadInput.getFileImage().getOriginalFilename();
         image.setImageName(imageName);
         if (imageStorangeType.equals("fileSystem")) {
             try {
@@ -35,7 +35,7 @@ public class ImageDownloadInputToImage  implements Converter<ImageDownloadInput,
                 if (!imageStorange.exists()) {
                     imageStorange.mkdir();
                 }
-                imageDownloadInput.getFileImage().transferTo(new File(imageStorange.getAbsolutePath() + "/" +imageName));
+                imageDownloadInput.getFileImage().transferTo(new File(imageStorange.getAbsolutePath() + "/" + imageName));
             } catch (IOException e) {
                 System.out.println("File can't transfer to storange");
                 return null;

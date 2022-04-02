@@ -1,14 +1,13 @@
 package ua.gov.mkip.saveheritage.input;
 
 import lombok.Data;
+import ua.gov.mkip.saveheritage.models.Role;
+import ua.gov.mkip.saveheritage.validator.PasswordRequirements;
+import ua.gov.mkip.saveheritage.validator.UniqueLogin;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import ua.gov.mkip.saveheritage.models.Role;
-import ua.gov.mkip.saveheritage.validator.PasswordRequirements;
-import ua.gov.mkip.saveheritage.validator.UniqueLogin;
-
 import java.util.Set;
 
 @Data

@@ -2,6 +2,7 @@ package ua.gov.mkip.saveheritage.validator;
 
 import lombok.RequiredArgsConstructor;
 import ua.gov.mkip.saveheritage.repositories.UserRepository;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -14,7 +15,7 @@ class UniqueLoginValidator implements ConstraintValidator<UniqueLogin, String> {
     }
 
     public boolean isValid(String username, ConstraintValidatorContext context) {
-        return (username != null) && (userRepository.findByUsername(username)==null);
+        return (username != null) && (userRepository.findByUsername(username) == null);
     }
 
 }

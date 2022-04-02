@@ -7,24 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
     @GetMapping("/")
-    public String index (Model model) {
-        model.addAttribute("title","Головна");
+    public String index(Model model) {
+        model.addAttribute("title", "Головна");
         return "index";
     }
-    @GetMapping("/test")
-    public String test (Model model) {
-        model.addAttribute("title","test");
-        return "test.html";
-    }
+
     @GetMapping("/home")
-    public String home (Model model) {
-        model.addAttribute("title","Домашня");
+    public String home(Model model) {
+        model.addAttribute("title", "Домашня");
         return "home";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
-       model.addAttribute("title","Авторизація");
+        model.addAttribute("title", "Авторизація");
         return "login";
     }
 }

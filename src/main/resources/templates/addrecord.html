@@ -1,28 +1,28 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-<head th:insert="fragments/fragment::head"/>
-<body>
-<form th:action="@{/saveReord}" th:object="${record}" method="post">
-    <table>
-        <tr>
-            <td></td>
-            <td><input type="hidden" th:field="*{recordId}" /></td>
-            <td th:if="${#fields.hasErrors('recordId')}" th:errors="*{recordId}">Name Error</td>
-        </tr>
-        <tr>
-            <td>Назва обєкту</td>
-            <td><input type="text" th:field="*{recordName}" /></td>
-            <td th:if="${#fields.hasErrors('recordName')}" th:errors="*{recordName}">Age Error</td>
-        </tr>
-        <tr>
-            <td>Опис обєкту</td>
-            <td><input type="text" th:field="*{recordDescription}" /></td>
-            <td th:if="${#fields.hasErrors('recordDescription')}" th:errors="*{recordDescription}">Age Error</td>
-        </tr>
-        <tr>
-            <td><button type="submit">Зберігти</button></td>
-        </tr>
-    </table>
-</form>
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+    <head th:insert="fragments/fragment::head"/>
+    <body>
+        <form th:action="@{/saveReord}" th:object="${record}" method="post">
+            <table>
+                <tr>
+                    <td></td>
+                    <td><input type="hidden" th:field="*{recordId}" /></td>
+                    <td th:if="${#fields.hasErrors('recordId')}" th:errors="*{recordId}">Name Error</td>
+                </tr>
+                <tr>
+                    <td>Назва обєкту</td>
+                    <td><input type="text" th:field="*{recordName}" /></td>
+                    <td th:if="${#fields.hasErrors('recordName')}" th:errors="*{recordName}">Age Error</td>
+                </tr>
+                <tr>
+                    <td>Опис обєкту</td>
+                    <td><input type="text" th:field="*{recordDescription}" /></td>
+                    <td th:if="${#fields.hasErrors('recordDescription')}" th:errors="*{recordDescription}">Age Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Зберігти</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
 </html>

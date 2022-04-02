@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface ImageRepository extends PagingAndSortingRepository<Image, Long> {
 
     @Query("select i from Image i where i.record = ?1")
-    Iterable <Image> findAllImagesOfCurrentRecord (Optional<Record> record);
+    Iterable<Image> findAllImagesOfCurrentRecord(Optional<Record> record);
 }

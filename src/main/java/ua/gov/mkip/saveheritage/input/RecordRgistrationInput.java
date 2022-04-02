@@ -1,9 +1,9 @@
 package ua.gov.mkip.saveheritage.input;
 
 import lombok.Data;
+import ua.gov.mkip.saveheritage.models.User;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import ua.gov.mkip.saveheritage.models.User;
 
 @Data
 public class RecordRgistrationInput {
@@ -12,7 +12,7 @@ public class RecordRgistrationInput {
     private User user;
 
     @Pattern(regexp = "^[A-Za-zА_Яа-я]+$")
-    @Size(min=4, max = 20)
+    @Size(min = 4, max = 20)
     private String recordName;
 
     @Pattern(regexp = "^[A-Za-zА_Яа-я]+$")
