@@ -7,15 +7,15 @@
 </head>
 <body>
 <h2>Welcome1</h2>
-<div sec:authorize="hasAnyRole('ROLE_USER')">hasRole('ROLE_USER')</div>
+<div sec:authorize="hasAnyRole('ROLE_USER')">hasRole('USER')</div>
 <h2>Welcome2</h2>
-<div sec:authorize="hasRole('ROLE_USER')">hasRole('ROLE_USER')</div>
+<div sec:authorize="hasRole('ROLE_USER')">hasRole('USER')</div>
 <h2>Welcome3</h2>
 <div sec:authorize="isAuthenticated()"> This content is only shown to authenticated users.</div>
 <h2>Welcome4</h2>
 <div th:text="${#httpServletRequest.userPrincipal}"> </div>
 <h2>Welcome5</h2>
-<div th:text="${#httpServletRequest.isUserInRole('ROLE_USER')}"> </div>
+<div th:text="${#httpServletRequest.isUserInRole('USER')}"> </div>
 </div>
 
 </body>

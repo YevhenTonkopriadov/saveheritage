@@ -2,12 +2,10 @@ package ua.gov.mkip.saveheritage.models;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
@@ -34,7 +32,10 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        for (Role role : roles)
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.toString()));
+        return authorities;
     }
 
     @Override
