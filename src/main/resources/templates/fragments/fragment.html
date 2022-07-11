@@ -3,9 +3,10 @@
     <title th:text="${title}"/>
     <meta http-equiv="Content-Type" content="text/htm; charset=UTF-8"/>
     <link th:href="@{/styles/style.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src ="${'/scripts/script.js'}"></script>
 </head>
 
-<div th:fragment="index">
+<div  th:fragment="index" class='no-print'>
     <a th:href="@{/}">Головна</a>
     <br>
 </div>
@@ -13,7 +14,7 @@
 <div th:fragment="singInUpOut">
     <div th:unless= "${#httpServletRequest.remoteUser}">
         <a th:href="@{/home}">Увійти</a>
-        <a th:href="@{/registration}" >Зареєструватися</a>
+        <a th:href="@{/registrationCraftsMan}" >Зареєструватися</a>
     </div>
     <form th:action="@{/logout}" method="post" th:if= "${#httpServletRequest.remoteUser}">
         <input type="submit" value="Вийти"/>
@@ -21,13 +22,22 @@
     <br>
 </div>
 <header th:fragament="header">
+    <H2 sec:authorize="hasRole('ROLE_ADMIN')">Ви маєте права Адміністратора</H2>
+    <H2 sec:authorize="hasRole('ROLE_USERREGISTERS')">Для отримання можливості внесення інформації про вироби звеніться, будь ласка, до пердстаників МКІП</H2>
+    <H2 sec:authorize="hasRole('ROLE_USERADOPED')">Для присудженння права Майстра зверніться будь ласка до пердстаників МКІП</H2>
+    <H2 sec:authorize="hasRole('ROLE_MKIP')">Міністерство культури та інформаціної політики України</H2>
+    <H2 sec:authorize="hasRole('ROLE_USER')">Майстер</H2>
     <ul class="hr">
-        <li><a th:href="@{/records}">Перелік втрачених об'єктів</a></li>
-        <li><a th:href="@{/addrecord}">Додати об'єкт</a></li>
-        <li><a th:href="@{/cabinet}">Особистий кабінет</a></li>
-        <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/records}">Адміністрування</a></li>
+        <li sec:authorize="hasAnyRole('ROLE_USER','ROLE_USERADOPED','ROLE_ADMIN')"><a th:href="@{/records}">Перелік творів</a></li>
+        <li sec:authorize="hasAnyRole('ROLE_USER','ROLE_USERADOPED')"><a th:href="@{/addrecord}">Додати об'єкт</a></li>
+        <li sec:authorize="hasAnyRole('ROLE_USER','ROLE_USERADOPED','ROLE_USERREGISTERS')"><a th:href="@{/cabinet}">Особистий кабінет</a></li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/listOfUser}">Перелік користувачів</a></li>
+        <li sec:authorize="hasRole('ROLE_MKIP')"><a th:href="@{/listOfUser}">Майстри</a></li>
+        <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/addUser}">Створити користувача</a></li>
     </ul>
     <br>
 </header>
+
+
 
 

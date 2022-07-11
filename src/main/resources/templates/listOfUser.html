@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+    <head th:insert="fragments/fragment::head"/>
+    <body>
+        <div th:insert="fragments/fragment::singInUpOut"/>
+        <header th:insert="fragments/fragment::header"/>
+        <h1  sec:authorize="hasRole('ROLE_MKIP')">Перелік Майстрів народних художніх промислів</h1>
+        <h1  sec:authorize="hasRole('ROLE_ADMIN')">Перелік користувачів</h1>
+        <table th:border="1" >
+            <tr>
+                <th/>
+                <th>Логін</th>
+                <th>Прізвише</th>
+                <th>Ім'я</th>
+                <th>Ім'я по батькові</th>
+                <th>Стать</th>
+                <th>Дата народження</th>
+                <th>Електрона адресса</th>
+                <th>Номер телефону</th>
+                <th>Роль користувача</th>
+            </tr>
+                <tr th:each="userCraftsMan:${listOfUser}">
+                <td th:text="${userCraftsMan.username}"/>
+                <td th:text="${userCraftsMan.id}"/>
+                <td th:text="${userCraftsMan.lastName}"/>
+                <td th:text="${userCraftsMan.firstName}"/>
+                <td th:text="${userCraftsMan.middleName}"/>
+                <td th:text="${userCraftsMan.sex.displayValue}"/>
+                <td th:text="${userCraftsMan.dateOfBirth}"/>
+                <td th:text="${userCraftsMan.email}"/>
+                <td th:text="${userCraftsMan.phone}"/>
+                <td> <p th:each="userRoles : ${userCraftsMan.roles}" th:value="${userRoles}" th:text="${userRoles.displayValue}"/></td>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+<head th:insert="fragments/fragment::head"/>
+<body>
+<div th:insert="fragments/fragment :: index"/>
+<div>
+    <H1>Паспорт майстра</H1>
+    <table>
+       <tr>
+            <td>
+                <img th:src="@{/image/user/{userId}(userId=*{craftMan.id})}"/>
+            </td>
+            <td>
+                <img th:src="@{/qr/user/{userId}(userId=*{craftMan.id})}"/>
+            </td>
+        </tr>
+      <tr>
+            <td>Прізвище:</td>
+            <td th:text="${craftMan.lastName}"/>
+        </tr>
+       <tr>
+            <td>Ім'я:</td>
+            <td th:text="${craftMan.firstName}"/>
+        </tr>
+        <tr>
+            <td>Ім'я по батькові:</td>
+            <td th:text="${craftMan.middleName}"/>
+        </tr>
+        <tr>
+            <td>Дата народження:</td>
+            <td th:text="${craftMan.dateOfBirth}"/>
+        </tr>
+        <tr>
+            <td>Стать:</td>
+            <td th:text="${craftMan.sex.displayValue}"/>
+        </tr>
+       <tr>
+            <td>Область, де майстер провадить діяльність:</td>
+            <td th:text="${craftMan.region.displayValue}"/>
+        </tr>
+        <tr>
+            <td>Історико-етнографічний район:</td>
+            <td th:text="${craftMan.historicalEthnographicDistrict}"/>
+        </tr>
+        <tr>
+            <td>Традиція, в якій працює майстер:</td>
+            <td th:text="${craftMan.tradition}"/>
+        </tr>
+        <tr>
+            <td>Вид виробництва, в якому працює майстер:</td>
+            <td th:text="${craftMan.type}"/>
+        </tr>
+        <tr>
+            <td>Електронна пошта:</td>
+            <td th:text="${craftMan.email}"/>
+        </tr>
+        <tr>
+            <td>Номер телефону:</td>
+            <td th:text="${craftMan.phone}"/>
+        </tr>
+        <tr>
+            <td>Адреса майстерні:</td>
+            <td th:text="${craftMan.address}"/>
+        </tr>
+        <tr>
+            <td>Організаційно-правова форма:</td>
+            <td th:text="${craftMan.organization}"/>
+        </tr>
+        <tr>
+            <td>Документ, що підтверджує кваліфікацію майстра (номер):</td>
+            <td th:text="${craftMan.document}"/>
+        </tr>
+        <tr class='no-print'>
+            <td>
+                <input class="button" type="submit" value="Печать" onclick="print_()"></input>
+            </td>
+        </tr>
+    </table>
+    </form>
+</div>
+</body>
+</html>

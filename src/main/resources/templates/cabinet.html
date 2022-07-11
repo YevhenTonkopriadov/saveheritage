@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:insert="fragments/fragment::head"/>
+  <body>
+  <div th:insert="fragments/fragment :: index" />
+  <div>
+    <form th:action="@{/saveCraftsMan}" th:object="${userCraftsMan}" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td>
+            <img th:src="@{/image/display}"/>
+          </td>
+          <td>
+            <img th:src="@{/qr/user/{userId}(userId=*{id})}"/>
+          <!--<td> <a th:href="@{/recordimages/{recordId}(recordId=${record.recordId})}"> Світлини</a><td/>-->
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="hidden" th:field="*{id}"/></td>
+        </tr>
+        <tr>
+          <td>Логін:</td>
+          <td><input type="text" th:field="*{username}"/></td>
+          <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</td>
+        </tr>
+        <tr>
+          <td>Прізвище:</td>
+          <td><input type="text" th:field="*{lastName}"/></td>
+          <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</td>
+        </tr>
+        <tr>
+          <td>Ім'я:</td>
+          <td><input type="text" th:field="*{firstName}"/></td>
+          <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</td>
+        </tr>
+        <tr>
+          <td>Ім'я по батькові:</td>
+          <td><input type="text" th:field="*{middleName}"/></td>
+          <td th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">Middle Name Error</td>
+        </tr>
+        <tr>
+          <td>Дата народження:</td>
+          <td><input type="text" th:field="*{dateOfBirth}" ></td>
+          <td th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">Date of Birth Error</td>
+        </tr>
+        <tr>
+        <tr>
+          <td>Стать:</td>
+          <td>
+            <select name="sex">
+              <option th:text="*{sex.displayValue}"/>
+              <option th:each="sex:${T(ua.gov.mkip.craft.models.enums.Sex).values()}" th:value="${sex}" th:text="${sex.displayValue}"></option>
+            </select>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Область, де майстер провадить діяльність:</td>
+          <td>
+            <select name="region">
+              <option th:text="*{region.displayValue}"/>
+              <option th:each="region:${T(ua.gov.mkip.craft.models.enums.Region).values()}" th:value="${region}" th:text="${region.displayValue}"></option>
+            </select>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Історико-етнографічний район:</td>
+          <td><input type="text" th:field="*{historicalEthnographicDistrict}"/></td>
+          <td th:if="${#fields.hasErrors('historicalEthnographicDistrict')}" th:errors="*{historicalEthnographicDistrict}">HistoricalEthnographicDistricte Error</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Традиція, в якій працює майстер:</td>
+          <td><input type="text" th:field="*{tradition}"/></td>
+          <td th:if="${#fields.hasErrors('tradition')}" th:errors="*{tradition}">Tradition Error</td>
+        </tr>
+        <tr>
+          <td>Вид виробництва, в якому працює майстер:</td>
+          <td><input type="text" th:field="*{type}"/></td>
+          <td th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type Error</td>
+        </tr>
+        <tr>
+          <td>Електронна пошта:</td>
+          <td><input type="text" th:field="*{email}"/></td>
+          <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+        </tr>
+        <tr>
+          <td>Номер телефону:</td>
+          <td><input type="text" th:field="*{phone}"/></td>
+          <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"> Phone Error</td>
+        </tr>
+        <tr>
+          <td>Адреса майстерні:</td>
+          <td><input type="text" th:field="*{address}"/></td>
+          <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>
+        </tr>
+        <tr>
+          <td>Організаційно-правова форма:</td>
+          <td><input type="text" th:field="*{organization}"/></td>
+          <td th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Organization Error</td>
+        </tr>
+        <tr>
+          <td>Документ, що підтверджує кваліфікацію майстра (номер):</td>
+          <td><input type="text" th:field="*{document}"/></td>
+          <td th:if="${#fields.hasErrors('document')}" th:errors="*{document}">Document Error</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Зберігрти"/>
+            <input type="submit" value="Змінити фото"/>
+            <input type="submit" value="Змінити пароль"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  </body>
+</html>

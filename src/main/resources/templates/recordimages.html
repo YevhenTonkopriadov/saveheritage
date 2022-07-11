@@ -3,9 +3,16 @@
     <head th:insert="fragments/fragment::head"/>
     <body>
         <div th:insert="fragments/fragment::singInUpOut"/>
-        <div th:each="image:${images}">
-            <img th:src="@{/img/{imageName}(imageName=${image.getImageName})}">
-        </div>
+        <table>
+            <tr>
+                <th>опис </th>
+                <th>світлина</th>
+            </tr>
+            <tr th:each="image:${images}">
+                <td th:text="${image.getDescriptionImage}"/>
+                <td><img th:src="@{/img/{imageName}(imageName=${image.getImageName})}"></td>
+            </tr>
+        </table>
         <form th:action="@{/savefile}" th:object="${imageDownloadInput}" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>

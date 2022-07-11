@@ -9,13 +9,16 @@
 		<relativePath/>
 	</parent>
 	<groupId>ua.gov.mkip</groupId>
-	<artifactId>saveheritage</artifactId>
+	<artifactId>craft</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>saveheritage</name>
-	<description>save heritage in Ukraine</description>
+	<name>sraft</name>
+	<description>craft in Ukraine</description>
 	<properties>
 		<java.version>17</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -71,6 +74,11 @@
 				<groupId>net.sf.jmimemagic</groupId>
 				<artifactId>jmimemagic</artifactId>
 				<version>0.1.5</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>core</artifactId>
+				<version>3.2.1</version>
 			</dependency>
 		</dependencies>
 	<build>
