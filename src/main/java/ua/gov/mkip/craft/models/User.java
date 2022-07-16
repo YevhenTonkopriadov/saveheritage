@@ -83,5 +83,10 @@ public class User implements UserDetails {
         return true;
     }
 
+    public User(){};
+
+    public User(Long id){
+        this.id =id;
+    }
 }
 

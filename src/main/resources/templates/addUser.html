@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="fragments/fragment::head"/>
+        <body>
+            <div th:insert="fragments/fragment::singInUpOut"/>
+            <header th:insert="fragments/fragment::header"/>
+            <H1>Створити користувача</H1>
+            <form th:action="@{/addUserByRole}" method="post" >
+                 <select name="role">
+                        <option th:each="role:${T(ua.gov.mkip.craft.models.enums.Role).values()}" th:value="${role}" th:text="${role.displayValue}"/>
+                </select>
+            <input type="submit" value="Далі"/>
+        </form>
+        </body>
+</html>

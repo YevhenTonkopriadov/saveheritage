@@ -22,7 +22,7 @@ public class QrServises {
         Hashtable hintMap = new Hashtable<>();
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix byteMatrix = qrCodeWriter.encode(passString, BarcodeFormat.QR_CODE, 500, 500, hintMap);
+        BitMatrix byteMatrix = qrCodeWriter.encode(passString, BarcodeFormat.QR_CODE, 80, 80, hintMap);
         int matrixWidth = byteMatrix.getWidth();
         BufferedImage image = new BufferedImage(matrixWidth, matrixWidth, BufferedImage.TYPE_INT_RGB);
         image.createGraphics();

@@ -12,5 +12,4 @@ public interface RecordRepository extends PagingAndSortingRepository<Record, Lon
 
     @Query("select i from Record i where i.userCraftsMan = ?1")
     Iterable<Record> findByUser(User user);
-
 }

@@ -23,6 +23,7 @@ public class UserCraftsManRegistrationInputToUserCraftsManConverter implements C
 
     @Override
     public UserCraftsMan convert(UserCraftsManRegistrationInput input) {
+        System.out.println(input.getRoles());
         UserCraftsMan userCraftsMan = new UserCraftsMan();
         userCraftsMan.setUsername(input.getUsername());
         userCraftsMan.setPassword(passwordEncoder.encode(input.getPassword()));
@@ -33,7 +34,12 @@ public class UserCraftsManRegistrationInputToUserCraftsManConverter implements C
         System.out.println(input.getDateOfBirth());
         System.out.println(userCraftsMan.getDateOfBirth());
         userCraftsMan.setSex(input.getSex());
-        userCraftsMan.setRoles(Set.of(Role.USER));
+        if (input.getRoles().isEmpty()){
+            userCraftsMan.setRoles(Set.of(Role.USERREGISTERS));
+        } else
+         {
+             userCraftsMan.setRoles(input.getRoles());
+         }
         userCraftsMan.setEmail(input.getEmail());
         userCraftsMan.setPhone(input.getPhone());
         userCraftsMan.setRegion(input.getRegion());

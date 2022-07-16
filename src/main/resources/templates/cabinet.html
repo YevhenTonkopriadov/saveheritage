@@ -5,14 +5,13 @@
   <div th:insert="fragments/fragment :: index" />
   <div>
     <form th:action="@{/saveCraftsMan}" th:object="${userCraftsMan}" method="post" enctype="multipart/form-data">
-      <table>
+      <table th:border="1">
         <tr>
           <td>
-            <img th:src="@{/image/display}"/>
+            <img th:src="@{/image/display/user/{userId}(userId=*{id})}"/>
           </td>
           <td>
             <img th:src="@{/qr/user/{userId}(userId=*{id})}"/>
-          <!--<td> <a th:href="@{/recordimages/{recordId}(recordId=${record.recordId})}"> Світлини</a><td/>-->
           </td>
         </tr>
         <tr>

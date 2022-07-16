@@ -8,6 +8,8 @@ import ua.gov.mkip.craft.models.Image;
 import ua.gov.mkip.craft.repositories.ImageRepository;
 import ua.gov.mkip.craft.repositories.RecordRepository;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ImageServises {
@@ -17,17 +19,20 @@ public class ImageServises {
     private final ImageDownloadInputToImage imageDownloadInputToImage;
 
 
-    public Iterable<Image> findAll (Long recordId) {
+    public Iterable<Image> findAll(Long recordId) {
         return imageRepository.findAllImagesOfCurrentRecord(recordRepository.findById(recordId));
     }
 
     public boolean saveImage(ImageDownloadInput imageDownloadInput) {
-        Image image = imageDownloadInputToImage.convert(imageDownloadInput);
-        if (image == null) {
-            return false;
-        } else {
-            imageRepository.save(image);
+        Optional<Image> optionalImage = imageDownloadInputToImage.convert(imageDownloadInput);
+        if (optionalImage.isPresent()) {
+            imageRepository.save(optionalImage.get());
             return true;
-        }
+        } else
+            return false;
+    }
+    public Optional <Image>  findById (long id){
+        return imageRepository.findById(id);
     }
 }
+

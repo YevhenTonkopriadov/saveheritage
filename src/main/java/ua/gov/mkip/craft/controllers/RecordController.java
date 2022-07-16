@@ -1,6 +1,7 @@
 package ua.gov.mkip.craft.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import ua.gov.mkip.craft.models.Record;
 import ua.gov.mkip.craft.models.UserCraftsMan;
 import ua.gov.mkip.craft.services.ImageServises;
 import ua.gov.mkip.craft.services.RecordService;
+import ua.gov.mkip.craft.services.UserCraftsManService;
+
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -23,6 +26,7 @@ import java.util.Optional;
 public class RecordController {
     private final RecordService recordService;
     private final ImageServises imageServises;
+    private final UserCraftsManService userCraftsManService;
 
     @RequestMapping("/records")
     public String records(Model model) {
@@ -84,5 +88,21 @@ public class RecordController {
         } else {
             return "recordimages";
         }
+    }
+    @RequestMapping(path = "/recordviewer/{id}")
+    public String recordviewer ( @PathVariable ("id")  Long id, Model model) {
+        Optional<Record> record = recordService.findOne(id);
+        if (record.isPresent()){
+            model.addAttribute("record", record.get());
+            model.addAttribute("userCraftsMan",userCraftsManService.findById(record.get().getUserCraftsMan().getId()).get());
+            model.addAttribute("rcordImages", imageServises.findAll(record.get().getRecordId()));
+            return "recordviewer";
+        }
+        return "/index";
+    }
+    @RequestMapping (path = "/userRecords/{userId}")
+    public String userRecords (Model model, @PathVariable ("userId") Long userId){
+        model.addAttribute("records", recordService.findAllByUserId(userId));
+        return "records";
     }
 }

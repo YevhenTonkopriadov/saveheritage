@@ -15,8 +15,6 @@ public class Image {
 
     private String imageName;
 
-    private String originalImageName;
-
     private String descriptionImage;
 
     @Lob

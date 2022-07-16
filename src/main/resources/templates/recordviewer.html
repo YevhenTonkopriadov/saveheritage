@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/fragment::head"/>
+<body>
+<div th:insert="fragments/fragment :: index"/>
+<div>
+    <H1>Паспорт твору</H1>
+    <table>
+       <tr>
+           <td> Назва об'єкту</td>
+           <td th:text="${record.recordName}"/>
+       </tr>
+        <tr>
+            <td> Опис об'єкту</td>
+            <td th:text="${record.recordDescription}"/>
+        </tr>
+        <tr>
+            <td> Майстер </td>
+            <td>
+                <a th:href="@{/userveiwer/{id}(id=${userCraftsMan.id})}" th:text="${userCraftsMan.lastName}+' '+${userCraftsMan.firstName}"/>
+            </td>
+        </tr>
+        <tr th:each="image:${rcordImages}">
+            <td>
+                <img th:src="@{/image/display/recordImage/{imageId}(imageId=${image.imageId})}"/>
+            </td>
+        </tr>
+        <tr class='no-print'>
+            <td>
+                <input class="button" type="submit" value="Печать" onclick="print_()"></input>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

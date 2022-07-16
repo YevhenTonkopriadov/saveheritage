@@ -8,28 +8,50 @@
         <h1  sec:authorize="hasRole('ROLE_ADMIN')">Перелік користувачів</h1>
         <table th:border="1" >
             <tr>
-                <th/>
-                <th>Логін</th>
-                <th>Прізвише</th>
-                <th>Ім'я</th>
-                <th>Ім'я по батькові</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Логін</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Особистий номер</th>
+                <th>Прізвише, Ім'я, Ім'я по батькові</th>
                 <th>Стать</th>
                 <th>Дата народження</th>
                 <th>Електрона адресса</th>
                 <th>Номер телефону</th>
                 <th>Роль користувача</th>
+                <th>Змінити роль користувачу</th>
+                <th>Перелік творів</th>
+                <th>Перглянути профайл</th>
             </tr>
-                <tr th:each="userCraftsMan:${listOfUser}">
-                <td th:text="${userCraftsMan.username}"/>
-                <td th:text="${userCraftsMan.id}"/>
-                <td th:text="${userCraftsMan.lastName}"/>
-                <td th:text="${userCraftsMan.firstName}"/>
-                <td th:text="${userCraftsMan.middleName}"/>
+            <tr th:each="userCraftsMan:${listOfUser}">
+                <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${userCraftsMan.username}"/>
+                <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${userCraftsMan.id}"/>
+                <td th:text="${userCraftsMan.lastName}+' '+${userCraftsMan.firstName}+' '+${userCraftsMan.middleName}"/>
                 <td th:text="${userCraftsMan.sex.displayValue}"/>
                 <td th:text="${userCraftsMan.dateOfBirth}"/>
                 <td th:text="${userCraftsMan.email}"/>
                 <td th:text="${userCraftsMan.phone}"/>
-                <td> <p th:each="userRoles : ${userCraftsMan.roles}" th:value="${userRoles}" th:text="${userRoles.displayValue}"/></td>
+                <td>
+                    <p th:each="userRoles : ${userCraftsMan.roles}" th:value="${userRoles}" th:text="${userRoles.displayValue}"/>
+                </td>
+                <td>
+                    <div th:each="userRoles : ${userCraftsMan.roles}">
+                        <p th:switch="${userRoles}">
+                            <a th:case="${T(ua.gov.mkip.craft.models.enums.Role).USERADOPED}" th:href="@{/setRole/{user}/{id}(user = ${T(ua.gov.mkip.craft.models.enums.Role).USER}, id=${userCraftsMan.id})}">Майстер </a>
+                            <a th:case="${T(ua.gov.mkip.craft.models.enums.Role).USERREGISTERS }" th:href="@{/setRole/{userAdoped}/{id}(userAdoped = ${T(ua.gov.mkip.craft.models.enums.Role).USERADOPED}, id=${userCraftsMan.id})}">Верифікований користувач </a>
+                        </p>
+                    </div>
+                </td>
+                <td>
+                    <a th:href="@{/userRecords/{userId}(userId=${userCraftsMan.id})}">Показати</a>
+                </td>
+                <td>
+                    <a th:href="@{/userveiwer/{userId}(userId=${userCraftsMan.id})}">Показати</a>
+                </td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a  th:href="@{/deleteUser/{userId}(userId=${userCraftsMan.id})}">Видалити</a>
+                </td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')" >
+                    <a  th:href="@{/setNewPassword/{userId}(userId=${userCraftsMan.id})}">Змінити пароль</a>
+                </td>
+            </tr>
         </table>
     </body>
 </html>

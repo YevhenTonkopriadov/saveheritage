@@ -26,6 +26,9 @@ public class Record {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "record")
     private Set <Image> imageSet;
 
+    public Record(){};
 
-
+    public Record(Long recordId) {
+        this.recordId = recordId;
+    }
 }

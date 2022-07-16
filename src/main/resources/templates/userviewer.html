@@ -4,14 +4,11 @@
 <body>
 <div th:insert="fragments/fragment :: index"/>
 <div>
-    <H1>Паспорт майстра</H1>
+    <H1>Інформація про майстра</H1>
     <table>
        <tr>
             <td>
-                <img th:src="@{/image/user/{userId}(userId=*{craftMan.id})}"/>
-            </td>
-            <td>
-                <img th:src="@{/qr/user/{userId}(userId=*{craftMan.id})}"/>
+                <img th:src="@{/image/display/user/{userId}(userId=*{craftMan.id})}"/>
             </td>
         </tr>
       <tr>
